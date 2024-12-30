@@ -1,0 +1,49 @@
+
+//                         ---------------------------------------------  APEX CLASS CODE  ------------------------------------------------------
+
+
+public class StringIterator implements Iterator<String> {
+
+    // List to store string elements for iteration
+	private List<String> words = new List<String>{'Apple', 'Box', 'Cat', 'Dog', 'Egg', 'Fox', 'God'};
+    
+    // Index to keep track of the current position in the list
+    private Integer currentIndex = 0;
+    
+    // Constructor initializes the list and logs a message if it's empty
+    public StringIterator() {
+        if (words.isEmpty()) {
+            System.debug('The list is empty, no values to iterate.');
+        }
+    }
+    
+    // hasNext method checks if there are more elements available in the list
+    public Boolean hasNext() {
+        return currentIndex < words.size();
+    }
+    
+    // next method returns the next element in the list if available
+    public String next() {
+        
+        // If there are no more elements, return null
+        if (!hasNext()) {
+            return null;
+        }
+        
+        // Return the current element and advance the index
+        return words[currentIndex++];
+    }
+}
+
+
+
+
+
+//                         ---------------------------------------------  EXECTE ANONYMOUS CODE  ------------------------------------------------------
+
+
+StringIterator iterator = new StringIterator();
+
+While (iterator.hasNext()){
+    System.debug('Processing the value: ' + iterator.next());
+}
