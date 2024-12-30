@@ -1,0 +1,46 @@
+// ----------------------------------------------------------   APEX CLASS CODE   --------------------------------------------------------------------
+
+
+public class ContactIterator implements Iterator<Contact> {
+    private List<Contact> contacts = [SELECT Id, FirstName, LastName FROM Contact];
+    
+    private Integer currentIndex = 0;
+    
+    public ContactIterator() {
+        if (contacts.isEmpty()) {
+            System.debug('No more Records....');
+        }
+    }
+    
+    public Boolean hasNext() {
+        return currentIndex < contacts.size();
+    }
+
+    public Contact next() {
+    if (!hasNext()) {
+        return null;
+    }
+    return contacts[currentIndex++];
+}
+
+}
+
+
+
+
+// ----------------------------------------------------------   EXECUTE ANONYMOUS CODE   --------------------------------------------------------------------
+
+ContactIterator iterator = new ContactIterator();
+
+While (iterator.hasNext()){
+    System.debug('Processing the value: ' + iterator.next());
+}
+
+
+
+
+Output:
+
+    Processing the value: Contact:{Id=0035j00001AxryeAAV, FirstName=Siddartha, LastName=Simha}
+    Processing the value: Contact:{Id=0035j00001AeywsAAF, FirstName=Andrewa, LastName=Yawn}
+
