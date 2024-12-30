@@ -47,3 +47,16 @@ StringIterator iterator = new StringIterator();
 While (iterator.hasNext()){
     System.debug('Processing the value: ' + iterator.next());
 }
+
+
+
+
+// Output:
+	Processing the value: Apple
+	Processing the value: Box
+	Processing the value: Cat
+	Processing the value: Dog
+	Processing the value: Egg
+	Processing the value: Fox
+	Processing the value: God
+
