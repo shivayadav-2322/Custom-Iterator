@@ -1,0 +1,47 @@
+
+//  ------------------------------------------------------------   APEX CLASS CODE  ----------------------------------------------------------------
+
+public class ConIterator implements Iterator<Contact> {
+
+    private List<Contact> contacts = [Select Id, FirstName, LastName From Contact Where LastName = 'test'];
+    
+    private Integer currentIndex = 0;
+    
+    public ConIterator(){
+        if(contacts.isEmpty()){
+            System.debug('No have values in the contact collection');
+        }
+    }
+    
+    public Boolean hasNext(){
+        return currentIndex < contacts.size();
+    }
+    
+    public contact next(){
+        if(!hasNext()){
+            return null;
+        }
+        
+        return contacts[currentIndex++];
+    }
+    
+}
+
+
+
+//  ------------------------------------------------------------   EXECUTE ANONYMOUS CODE  ----------------------------------------------------------------
+
+
+ConIterator iterator = new ConIterator();
+
+While (iterator.hasNext()){
+    System.debug('Processing the value: ' + iterator.next());
+}
+
+
+
+
+
+OutPut:
+   
+    No have values in the contact collection
